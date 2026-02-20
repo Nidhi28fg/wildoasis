@@ -5,7 +5,7 @@ import Stats from "./Stats";
 import SalesChart from "./SalesChart";
 import DurationChart from "./DurationChart";
 import TodayActivity from "../check-in-out/TodayActivity";
-import {Loader} from '@/components/Loader'
+import { Loader } from '@/components/Loader'
 
 import { useRecentBookings } from "./hooks/useRecentBookings";
 import { useRecentStays } from "./hooks/useRecentStays";
@@ -19,8 +19,8 @@ const DashboardLayout = () => {
     confirmedStays,
     numDays,
   } = useRecentStays();
-  const { cabins=[], isLoading: cabinIsLoading } = useCabins();
-    
+  const { cabins = [], isLoading: cabinIsLoading } = useCabins();
+
   return (
     <div className="grid grid-cols-[1fr_1fr_1fr_1fr] gap-5">
       <Stats
