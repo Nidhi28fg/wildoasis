@@ -22,3 +22,12 @@ export const updateUser = async (payload: { [x: string]: any }) => {
     throw new Error(error.message);
   }
 };
+
+export const login = async (payload: { [x: string]: any }) => {
+  // This is a wrapper, actual logic often handled by next-auth/react internally
+  // but we can expose it here for consistency if needed in hooks.
+};
+
+export const logout = async () => {
+  // Wrapper for signOut
+};

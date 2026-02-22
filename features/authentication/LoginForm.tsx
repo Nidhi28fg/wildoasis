@@ -1,12 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useLogin } from "./hooks/useLogin";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
 import Input from "@/components/Input";
-import {SpinnerMini} from "@/components/Loader";
+import { SpinnerMini } from "@/components/Loader";
 import Button from "@/components/Button";
 import FormRow from "@/components/FormRow";
 
@@ -22,27 +21,10 @@ const LoginForm = () => {
     },
   });
 
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+  const { login, isLoading } = useLogin();
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setIsLoading(true);
-    signIn("credentials", {
-      ...data,
-      redirect: false,
-    }).then((callback) => {
-      setIsLoading(false);
-
-      if (callback?.error) {
-        toast.error(callback.error);
-        return;
-      }
-
-      if (callback?.ok) {
-        toast.success("Logged in successful");
-        router.push("/dashboard");
-      }
-    });
+    login(data);
   };
 
   return (
