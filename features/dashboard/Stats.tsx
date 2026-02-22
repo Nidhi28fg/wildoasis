@@ -16,6 +16,7 @@ interface StatsProps {
   numDays: number;
   cabinCount: number;
   isLoading: boolean;
+  unconfirmedStays: Booking[];
 }
 
 const Stats: FC<StatsProps> = ({
@@ -24,6 +25,7 @@ const Stats: FC<StatsProps> = ({
   numDays = 0,
   cabinCount = 0,
   isLoading,
+  unconfirmedStays = [],
 }) => {
   const numBookings = bookings.length;
   const sales = bookings.reduce((acc, cur) => acc + cur.totalPrice, 0);
@@ -34,6 +36,8 @@ const Stats: FC<StatsProps> = ({
   const occupation =
     confirmedStays.reduce((acc, cur) => acc + cur.numNights, 0) /
     (numDays * cabinCount);
+
+  const checkouts = unconfirmedStays.length;
   return (
     <>
 
@@ -67,6 +71,15 @@ const Stats: FC<StatsProps> = ({
         color="yellow"
         icon={HiOutlineChartBar}
         value={Math.round(occupation * 100) + "%"}
+        isLoading={isLoading}
+        link="/stays"
+      />
+
+      <Stat
+        title="Check outs"
+        color="red"
+        icon={HiOutlineCalendarDays}
+        value={checkouts}
         isLoading={isLoading}
         link="/stays"
       />

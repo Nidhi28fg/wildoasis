@@ -5,7 +5,6 @@ import Stats from "./Stats";
 import SalesChart from "./SalesChart";
 import DurationChart from "./DurationChart";
 import TodayActivity from "../check-in-out/TodayActivity";
-import { Loader } from '@/components/Loader'
 
 import { useRecentBookings } from "./hooks/useRecentBookings";
 import { useRecentStays } from "./hooks/useRecentStays";
@@ -18,6 +17,7 @@ const DashboardLayout = () => {
     isLoading: staysIsLoading,
     confirmedStays,
     numDays,
+    unconfirmedStays,
   } = useRecentStays();
   const { cabins = [], isLoading: cabinIsLoading } = useCabins();
 
@@ -28,7 +28,8 @@ const DashboardLayout = () => {
         confirmedStays={confirmedStays}
         numDays={numDays}
         cabinCount={cabins.length}
-        isLoading={bookingsIsLoading || staysIsLoading}
+        isLoading={bookingsIsLoading || staysIsLoading || cabinIsLoading}
+        unconfirmedStays={unconfirmedStays}
       />
       <TodayActivity />
       <DurationChart confirmedStays={confirmedStays} isLoading={staysIsLoading} />
