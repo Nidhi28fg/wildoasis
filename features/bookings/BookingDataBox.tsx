@@ -55,13 +55,7 @@ const BookingDataBox: FC<BookingDataBoxProps> = ({ booking }) => {
       <section className="pt-8 pb-3 px-10 text-[14px]">
         <div className="flex items-center gap-3 mb-4 text-gray-500 dark:text-gray-400 ">
           {country && (
-            <Image
-              className="rounded-sm block border border-gray-100 dark:border-gray-800"
-              src={country}
-              width={20}
-              height={16}
-              alt={`Flag of ${nationality}`}
-            />
+            <span className="text-gray-400 dark:text-gray-500 font-bold text-[10px] uppercase border border-gray-100 dark:border-gray-800 rounded-sm px-1 leading-none shadow-sm">{country.slice(0, 3)}</span>
           )}
           <p className="font-medium text-gray-700 dark:text-gray-300">
             {guestName} {numGuests > 1 ? `+ ${numGuests - 1} guests` : ""}
@@ -88,11 +82,10 @@ const BookingDataBox: FC<BookingDataBoxProps> = ({ booking }) => {
         </DataItem>
 
         <div
-          className={`flex items-center justify-between py-[12px] px-6 rounded-md mt-6 ${
-            isPaid
+          className={`flex items-center justify-between py-[12px] px-6 rounded-md mt-6 ${isPaid
               ? "bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100"
               : "bg-yellow-100 text-yellow-700 dark:bg-yellow-700 dark:text-yellow-100"
-          }`}
+            }`}
         >
           <DataItem
             icon={HiOutlineCurrencyDollar}

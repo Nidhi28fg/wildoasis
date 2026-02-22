@@ -1,6 +1,15 @@
 import axios from "axios";
 import { uploadImage } from "./uploadImage";
 
+export const getCabin = async (id: string) => {
+  try {
+    const { data } = await axios.get(`/api/cabin/${id}`);
+    return data;
+  } catch (error) {
+    throw new Error("failed to fetch cabin");
+  }
+};
+
 export const getCabins = async () => {
   try {
     const { data } = await axios.get("/api/cabin");

@@ -17,6 +17,9 @@ const Login = () => {
           Sign up
         </Link>
       </p>
+      <p className="text-center text-[14px] text-gray-500 mt-4"> Go to Main Website <Link href="/" className="text-indigo-600 hover:text-indigo-700 font-medium">
+        Home
+      </Link></p>
     </main>
   );
 };

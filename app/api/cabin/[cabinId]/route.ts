@@ -1,5 +1,26 @@
 import { db } from "@/lib/db";
 
+export const GET = async (
+  _req: Request,
+  { params }: { params: { cabinId: string } }
+) => {
+  const { cabinId } = params;
+  try {
+    const cabin = await db.cabin.findUnique({
+      where: {
+        id: cabinId,
+      },
+    });
+
+    if (!cabin) return new Response("Cabin not found", { status: 404 });
+
+    return new Response(JSON.stringify(cabin));
+  } catch (error) {
+    console.log(error);
+    return new Response("Failed to fetch cabin", { status: 500 });
+  }
+};
+
 interface IParams {
   cabinId?: string;
 }

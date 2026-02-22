@@ -67,15 +67,17 @@ const Button: FC<ButtonProps> = ({
 
 const List = ({ id, children }: { id: string; children: React.ReactNode }) => {
   const { openId, close, offsetTop } = useContext(MenuContext);
-  const { ref } = useOutsideClick(close, false, openId===id);
-  useKeyPress("Escape", close, openId===id);
+  const { ref } = useOutsideClick(close, false, openId === id);
+  useKeyPress("Escape", close, openId === id);
 
   if (openId !== id) return null;
+
+  const isBottom = typeof window !== "undefined" && (window.innerHeight - offsetTop) > 200;
 
   return (
     <ul
       ref={ref}
-      className={`absolute ${(window.innerHeight - offsetTop) > 200 ? "top-[120%]": "bottom-[90%]"}  right-[10%] w-auto bg-white dark:bg-black shadow-md rounded-md z-[9999] text-[12px]`}
+      className={`absolute ${isBottom ? "top-[120%]" : "bottom-[90%]"}  right-[10%] w-auto bg-white dark:bg-black shadow-md rounded-md z-[9999] text-[12px]`}
     >
       {children}
     </ul>
@@ -84,10 +86,10 @@ const List = ({ id, children }: { id: string; children: React.ReactNode }) => {
 
 const MenuContext = createContext({
   openId: "",
-  open: (id: string) => {},
-  close: () => {},
+  open: (id: string) => { },
+  close: () => { },
   offsetTop: 0,
-  setOffsetTop: (val: number) => {}
+  setOffsetTop: (val: number) => { }
 });
 
 const Menu: FC<MenusProps> & {

@@ -43,8 +43,15 @@ interface WindowProps {
 const Window: React.FC<WindowProps> = ({ children, name }) => {
   const { openName, close } = useContext(ModalContext);
   const { ref } = useOutsideClick(close, true, name === openName);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useKeyPress("Escape", close, name === openName)
+
+  if (!mounted) return null;
 
   return createPortal(
     <AnimatePresence>

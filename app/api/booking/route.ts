@@ -51,7 +51,7 @@ export const GET = async (req: Request) => {
           },
         },
       },
-      
+
     });
 
     const count = await db.booking.count({
@@ -60,9 +60,72 @@ export const GET = async (req: Request) => {
     });
 
 
-    return new Response(JSON.stringify({bookings, count}), { status: 200 });
+    return new Response(JSON.stringify({ bookings, count }), { status: 200 });
   } catch (error) {
     console.log(error);
-    new Response("Fail to fetch bookings", { status: 500 });
+    return new Response("Fail to fetch bookings", { status: 500 });
+  }
+};
+
+export const POST = async (req: Request) => {
+  try {
+    const {
+      startDate,
+      endDate,
+      numNights,
+      numGuests,
+      cabinPrice,
+      extrasPrice,
+      totalPrice,
+      hasBreakfast,
+      observations,
+      cabinId,
+      guestName,
+      guestEmail,
+      nationality,
+      country,
+      nationalID,
+    } = await req.json();
+
+    // 1. Create or Find Guest
+    let guest = await db.guest.findFirst({
+      where: { email: guestEmail }
+    });
+
+    if (!guest) {
+      guest = await db.guest.create({
+        data: {
+          fullName: guestName,
+          email: guestEmail,
+          nationality,
+          country,
+          nationalID,
+        }
+      });
+    }
+
+    // 2. Create Booking
+    const booking = await db.booking.create({
+      data: {
+        startDate: new Date(startDate),
+        endDate: new Date(endDate),
+        numNights,
+        numGuests,
+        cabinPrice,
+        extrasPrice,
+        totalPrice,
+        status: "unconfirmed",
+        hasBreakfast,
+        isPaid: false,
+        observations: observations || "",
+        cabinId,
+        guestId: guest.id,
+      },
+    });
+
+    return new Response(JSON.stringify(booking), { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return new Response("Fail to create booking", { status: 500 });
   }
 };

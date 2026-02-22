@@ -30,13 +30,9 @@ const TodayItem: FC<TodayItemProps> = ({ activity }) => {
         </span>
       )}
 
-      <Image
-        width={20}
-        height={10}
-        className="rounded-s-sm border border-gray-100 dark:border-gray-800"
-        src={guest.country}
-        alt={`Flag of ${guest.nationality}`}
-      />
+      {guest.country && (
+        <span className="text-gray-400 dark:text-gray-500 font-bold text-[10px] uppercase border border-gray-100 dark:border-gray-800 rounded-sm px-1 leading-none shadow-sm">{guest.country.slice(0, 3)}</span>
+      )}
       <span className="font-medium text-[12px] text-gray-600 dark:text-gray-300">{guest.fullName}</span>
       <span className="text-[13px] dark:text-gray-400">{numNights} nights</span>
 
