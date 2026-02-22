@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import FormRow from "@/components/FormRow";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import {SpinnerMini} from "@/components/Loader";
+import { SpinnerMini } from "@/components/Loader";
 import { useRegister } from "./hooks/useRegister";
 
 const RegisterForm = () => {
@@ -25,10 +26,15 @@ const RegisterForm = () => {
     },
   });
 
+  const router = useRouter();
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     const { email, password, fullName } = data;
     registerUser({ email, password, fullName }, {
-      onSuccess: () => reset()
+      onSuccess: () => {
+        reset();
+        router.push("/login");
+      }
     });
   };
 

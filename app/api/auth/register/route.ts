@@ -5,10 +5,6 @@ import { db } from "@/lib/db";
 
 export const POST = async (req: NextRequest) => {
   try {
-    const token = await getToken({ req });
-
-    if (!token) return new Response("Unauthorised", { status: 401 });
-
     const { fullName, email, password } = await req.json();
 
     if (!fullName || !email || !password)
