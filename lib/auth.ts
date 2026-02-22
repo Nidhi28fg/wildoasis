@@ -44,9 +44,9 @@ export const authOptions: AuthOptions = {
       if (token && session.user) {
         session.user.name = token.name;
         session.user.email = token.email;
-        session.user.image = String(token.image || token.picture);
+        session.user.image = (token.image || token.picture) as string;
       }
-      
+
       return session;
     },
     async jwt({ token, trigger, session }) {
