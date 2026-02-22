@@ -97,18 +97,18 @@ const BookingPage = () => {
                     <span>Back to cabins</span>
                 </button>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
                     {/* Booking Summary - Sticky */}
-                    <div className="lg:col-span-1">
-                        <div className="bg-white dark:bg-gray-900 rounded-[2rem] p-8 border border-gray-100 dark:border-gray-800 shadow-xl sticky top-32">
+                    <div className="lg:col-span-1 order-1 lg:order-2">
+                        <div className="bg-white dark:bg-gray-900 rounded-[2rem] p-6 md:p-8 border border-gray-100 dark:border-gray-800 shadow-xl lg:sticky lg:top-32">
                             <h2 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Booking Summary</h2>
 
-                            <div className="relative h-48 rounded-2xl overflow-hidden mb-6">
+                            <div className="relative h-40 md:h-48 rounded-2xl overflow-hidden mb-6">
                                 <Image src={cabin.image} alt={cabin.name} fill className="object-cover" />
                             </div>
 
                             <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">{cabin.name}</h3>
-                            <p className="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+                            <p className="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed line-clamp-3 md:line-clamp-none">
                                 {cabin.description}
                             </p>
 
@@ -125,14 +125,14 @@ const BookingPage = () => {
                                 )}
                                 <div className="flex justify-between items-center pt-4 border-t border-gray-50 dark:border-gray-800">
                                     <span className="text-lg font-bold text-gray-900 dark:text-white">Total</span>
-                                    <span className="text-2xl font-black text-indigo-600 dark:text-indigo-400">{formatCurrency(totalPrice)}</span>
+                                    <span className="text-xl md:text-2xl font-black text-indigo-600 dark:text-indigo-400">{formatCurrency(totalPrice)}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* Booking Form */}
-                    <div className="lg:col-span-2">
+                    <div className="lg:col-span-2 order-2 lg:order-1">
                         <form onSubmit={handleSubmit} className="space-y-8">
                             {/* Stay Details */}
                             <div className="bg-white dark:bg-gray-900 rounded-[2rem] p-8 md:p-10 border border-gray-100 dark:border-gray-800 shadow-sm">
@@ -277,9 +277,9 @@ const BookingPage = () => {
                             <button
                                 type="submit"
                                 disabled={isCreating}
-                                className="w-full py-6 bg-indigo-600 text-white rounded-[2rem] font-bold text-xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-500/20 active:scale-95 disabled:opacity-50"
+                                className="w-full py-5 md:py-6 bg-indigo-600 text-white rounded-[1.5rem] md:rounded-[2rem] font-bold text-lg md:text-xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-500/20 active:scale-95 disabled:opacity-50"
                             >
-                                {isCreating ? 'Processing...' : `Confirm Booking for ${formatCurrency(totalPrice)}`}
+                                {isCreating ? 'Processing...' : `Confirm Booking`}
                             </button>
                         </form>
                     </div>

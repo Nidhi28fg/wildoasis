@@ -128,14 +128,14 @@ const AboutPage = () => {
 
             {/* CTA */}
             <section className="py-24 container mx-auto px-6">
-                <div className="bg-gray-900 dark:bg-indigo-950 rounded-[4rem] p-12 md:p-24 text-center relative overflow-hidden">
+                <div className="bg-gray-900 dark:bg-indigo-950 rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-24 text-center relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl -mr-32 -mt-32" />
                     <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl -ml-32 -mb-32" />
 
-                    <h2 className="text-4xl md:text-6xl font-black text-white mb-8 relative z-10">Start Your Story With Us</h2>
+                    <h2 className="text-3xl md:text-6xl font-black text-white mb-8 relative z-10">Start Your Story With Us</h2>
                     <Link
                         href="/explore"
-                        className="inline-block px-12 py-5 bg-white text-gray-900 rounded-full font-bold text-lg hover:bg-indigo-600 hover:text-white transition-all shadow-2xl relative z-10"
+                        className="inline-block px-8 md:px-12 py-4 md:py-5 bg-white text-gray-900 rounded-full font-bold text-base md:text-lg hover:bg-indigo-600 hover:text-white transition-all shadow-2xl relative z-10"
                     >
                         Book Your Stay Now
                     </Link>

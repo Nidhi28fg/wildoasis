@@ -7,7 +7,7 @@ export default function HomePage() {
     return (
         <div className="overflow-hidden">
             {/* Hero Section */}
-            <section className="relative h-screen flex items-center justify-center pt-20">
+            <section className="relative h-screen flex items-center justify-center pt-20 px-4 md:px-0">
                 <div className="absolute inset-0 z-0">
                     <Image
                         src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b"
@@ -19,26 +19,26 @@ export default function HomePage() {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-50 dark:to-gray-950" />
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10 text-center">
-                    <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-white text-xs font-bold tracking-[0.2em] uppercase mb-8 border border-white/20 animate-fade-in">
+                <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+                    <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-white text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-6 md:mb-8 border border-white/20 animate-fade-in">
                         Luxury Boutique Hotel
                     </span>
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight leading-[1.1] max-w-4xl mx-auto">
+                    <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 md:mb-8 tracking-tight leading-[1.2] md:leading-[1.1] max-w-4xl mx-auto">
                         Escape to the Heart of the <span className="text-indigo-400 italic">Wilderness</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-200 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+                    <p className="text-base md:text-xl text-gray-200 mb-10 md:mb-12 max-w-2xl mx-auto font-light leading-relaxed">
                         Discover a unique blend of untamed nature and modern luxury at our secluded boutique resort. Your sanctuary awaits.
                     </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
                         <Link
                             href="/explore"
-                            className="px-8 py-4 bg-indigo-600 text-white rounded-full font-bold flex items-center gap-3 transition-all hover:bg-indigo-700 hover:gap-5 shadow-2xl shadow-indigo-500/30"
+                            className="w-full sm:w-auto px-8 py-4 bg-indigo-600 text-white rounded-full font-bold flex items-center justify-center gap-3 transition-all hover:bg-indigo-700 hover:gap-5 shadow-2xl shadow-indigo-500/30 text-sm md:text-base"
                         >
                             Explore Our Cabins <HiArrowRight className="w-5 h-5" />
                         </Link>
                         <Link
                             href="/about"
-                            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-full font-bold hover:bg-white/20 transition-all"
+                            className="w-full sm:w-auto px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-full font-bold hover:bg-white/20 transition-all text-sm md:text-base flex items-center justify-center"
                         >
                             Learn More
                         </Link>
@@ -89,6 +89,7 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
+
 
             {/* CTA Section */}
             <section className="pb-32 container mx-auto px-6">

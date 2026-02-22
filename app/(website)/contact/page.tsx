@@ -19,11 +19,11 @@ const ContactPage = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto">
                     {/* Contact Information Card */}
-                    <div className="lg:col-span-1 space-y-8">
-                        <div className="bg-white dark:bg-gray-900 p-10 rounded-[2.5rem] border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-none">
-                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-10">Get in touch</h3>
+                    <div className="lg:col-span-1 space-y-6 md:space-y-8">
+                        <div className="bg-white dark:bg-gray-900 p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-none">
+                            <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-8 md:mb-10">Get in touch</h3>
 
                             <div className="space-y-8">
                                 <div className="flex gap-6 group">
@@ -73,9 +73,9 @@ const ContactPage = () => {
 
                     {/* Contact Form Card */}
                     <div className="lg:col-span-2">
-                        <div className="bg-white dark:bg-gray-900 p-10 md:p-14 rounded-[3rem] border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-none h-full flex flex-col">
-                            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Send us a message</h3>
-                            <p className="text-gray-500 mb-12">Fill out the form below and we'll get back to you as soon as possible.</p>
+                        <div className="bg-white dark:bg-gray-900 p-8 md:p-14 rounded-[2rem] md:rounded-[3rem] border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-none h-full flex flex-col">
+                            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">Send us a message</h3>
+                            <p className="text-gray-500 mb-8 md:mb-12">Fill out the form below and we'll get back to you as soon as possible.</p>
 
                             <form className="space-y-8 flex-grow">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -119,7 +119,7 @@ const ContactPage = () => {
 
                                 <button
                                     type="submit"
-                                    className="w-full py-6 bg-gray-900 dark:bg-indigo-600 text-white rounded-[2rem] font-bold text-xl hover:bg-gray-800 dark:hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-600/20 active:scale-[0.98]"
+                                    className="w-full py-4 md:py-6 bg-gray-900 dark:bg-indigo-600 text-white rounded-[1.5rem] md:rounded-[2rem] font-bold text-lg md:text-xl hover:bg-gray-800 dark:hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-600/20 active:scale-[0.98]"
                                 >
                                     Send Message
                                 </button>
