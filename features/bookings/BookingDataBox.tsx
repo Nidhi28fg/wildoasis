@@ -9,7 +9,7 @@ import {
 } from "react-icons/hi2";
 
 import DataItem from "@/components/DataItem";
-import { formatCurrency, formatDistanceFromNow } from "@/utils/helpers";
+import { formatCurrency, formatDate, formatDistanceFromNow, getNightsPhrase } from "@/utils/helpers";
 import { ExtendedBooking } from "@/types";
 
 interface BookingDataBoxProps {
@@ -39,16 +39,16 @@ const BookingDataBox: FC<BookingDataBoxProps> = ({ booking }) => {
         <div className="flex items-center gap-4 font-medium text-[16px]">
           <HiOutlineHomeModern className="h-[24px] w-[24px]" />
           <p>
-            {numNights} nights in Cabin <span>{cabinName}</span>
+            {getNightsPhrase(numNights)} in Cabin <span>{cabinName}</span>
           </p>
         </div>
 
         <p className="text-[15px]">
-          {format(new Date(startDate), "EEE, MMM dd yyyy")} (
+          {formatDate(startDate, "EEE, MMM dd yyyy")} (
           {isToday(new Date(startDate))
             ? "Today"
             : formatDistanceFromNow(String(startDate))}
-          ) &mdash; {format(new Date(endDate), "EEE, MMM dd yyyy")}
+          ) &mdash; {formatDate(endDate, "EEE, MMM dd yyyy")}
         </p>
       </header>
 
@@ -110,7 +110,7 @@ const BookingDataBox: FC<BookingDataBoxProps> = ({ booking }) => {
       </section>
 
       <footer className="py-4 px-10 text-[12px] text-gray-500  dark:text-gray-400 text-right">
-        <p>Booked {format(new Date(createdAt), "EEE, MMM dd yyyy, p")}</p>
+        <p>Booked {formatDate(createdAt, "EEE, MMM dd yyyy, p")}</p>
       </footer>
     </section>
   );
