@@ -1,4 +1,4 @@
-import { differenceInDays, formatDistance, parseISO } from "date-fns";
+import { differenceInDays, format, formatDistance, parseISO } from "date-fns";
 export const formatCurrency = (value: number) =>
   new Intl.NumberFormat("en", { style: "currency", currency: "USD" }).format(
     value
@@ -28,4 +28,7 @@ export const formatDistanceFromNow = (dateStr: string) =>
 
 export const subtractDates = (dateStr1: string, dateStr2: string) =>
   differenceInDays(parseISO(dateStr1), parseISO(dateStr2));
+
+export const formatDate = (date: string | Date, formatStr = "MMM dd yyyy") =>
+  format(new Date(date), formatStr);
 

@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-  @apply max-w-[90rem] min-w-[24.375rem] mx-auto my-0;
+  @apply max-w-[90rem] min-w-0 md:min-w-[53.375rem] mx-auto my-0;
 }
 
 .nav-link:hover,

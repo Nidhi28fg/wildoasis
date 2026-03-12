@@ -13,3 +13,4 @@ export const useCabins = () => {
 
   return { isLoading, cabins };
 };
+

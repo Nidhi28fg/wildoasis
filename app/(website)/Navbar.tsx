@@ -34,8 +34,8 @@ const Navbar = () => {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${isScrolled || isMenuOpen
-                    ? "bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-lg py-3"
-                    : "bg-transparent py-5"
+                ? "bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-lg py-3"
+                : "bg-transparent py-5"
                 }`}
         >
             <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
@@ -88,36 +88,44 @@ const Navbar = () => {
 
             {/* Mobile Menu Overlay */}
             <div
-                className={`fixed inset-0 bg-white dark:bg-gray-950 z-[105] flex flex-col items-center justify-center transition-all duration-500 md:hidden ${isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
+                className={`fixed inset-0 z-[105] bg-black text-white flex flex-col items-center justify-center transition-all duration-500 md:hidden ${isMenuOpen
+                    ? "translate-y-0 opacity-100 backdrop-blur-xl"
+                    : "-translate-y-full opacity-0 pointer-events-none"
                     }`}
             >
-                <div className="flex flex-col items-center gap-8 px-6 text-center">
-                    {navLinks.map((link) => (
+                <div className="flex flex-col items-center gap-10 px-6 py-20 w-full max-h-full">
+                    <div className="flex flex-col items-center gap-8">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className={`text-sm font-bold tracking-tight transition-all active:scale-95 ${pathname === link.href
+                                    ? "text-indigo-600"
+                                    : "text-gray-900 dark:text-gray-100"
+                                    }`}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
+
+                    <div className="h-px w-24 bg-black" />
+
+                    <div className="flex flex-col items-center gap-6 w-full max-w-[280px]">
                         <Link
-                            key={link.href}
-                            href={link.href}
-                            className={`text-3xl font-bold tracking-tight transition-all ${pathname === link.href ? "text-indigo-600" : "text-gray-800 dark:text-gray-300"
-                                }`}
+                            href="/login"
+                            className="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors"
                         >
-                            {link.label}
+                            Admin Login
                         </Link>
-                    ))}
 
-                    <div className="h-px w-24 bg-gray-100 dark:bg-gray-800 my-4" />
-
-                    <Link
-                        href="/login"
-                        className="text-lg font-medium text-gray-500 dark:text-gray-400"
-                    >
-                        Admin Login
-                    </Link>
-
-                    <Link
-                        href="/explore"
-                        className="mt-4 px-10 py-4 bg-indigo-600 text-white rounded-full font-bold shadow-xl active:scale-95"
-                    >
-                        Book Your Stay
-                    </Link>
+                        <Link
+                            href="/explore"
+                            className="w-full py-4 bg-indigo-600 text-white rounded-full text-center font-bold shadow-xl shadow-indigo-500/20 active:scale-95 transition-transform"
+                        >
+                            Book Your Stay
+                        </Link>
+                    </div>
                 </div>
             </div>
         </nav>
