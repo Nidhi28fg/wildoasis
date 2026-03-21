@@ -1,32 +1,10 @@
 "use client";
-import React, { createContext, useContext, useState } from "react";
-
-const GlobalContext = createContext({
-  isSidebarOpen: true,
-  toggleSidebar: () => {},
-});
-
-export const GlobalContextProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen((prev: boolean) => !prev);
-  };
-
-  return (
-    <GlobalContext.Provider value={{ isSidebarOpen, toggleSidebar }}>
-      {children}
-    </GlobalContext.Provider>
-  );
-};
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { toggleSidebar as toggleSidebarAction } from "@/store/uiSlice";
 
 export const useGlobalContext = () => {
-  const context = useContext(GlobalContext);
-  if (context === undefined)
-    throw new Error("GlobalContext was used outside of GlobalContextProvider");
-  return context;
+  const dispatch = useAppDispatch();
+  const isSidebarOpen = useAppSelector((state) => state.ui.isSidebarOpen);
+  const toggleSidebar = () => dispatch(toggleSidebarAction());
+  return { isSidebarOpen, toggleSidebar };
 };

@@ -6,8 +6,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "react-hot-toast";
 
-import { DarkModeProvider } from "@/context/DarkModeContext";
-import { GlobalContextProvider } from "@/context/GlobalContext";
+import ReduxProvider from "./ReduxProvider";
+import ThemeManager from "./ThemeManager";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,8 +22,8 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
     <SessionProvider>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
-        <GlobalContextProvider>
-          <DarkModeProvider>
+        <ReduxProvider>
+          <ThemeManager>
             <NextTopLoader showSpinner={false} color="#4f46e5" height={2.5} />
             {children}
             <Toaster
@@ -45,8 +45,8 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
                 },
               }}
             />
-          </DarkModeProvider>
-        </GlobalContextProvider>
+          </ThemeManager>
+        </ReduxProvider>
       </QueryClientProvider>
     </SessionProvider>
   );
