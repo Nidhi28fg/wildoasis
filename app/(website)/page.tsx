@@ -1,121 +1,299 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { HiArrowRight, HiShieldCheck, HiStar, HiSun } from "react-icons/hi2";
 
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import { useTheme } from "@mui/material/styles";
+import { alpha } from "@mui/system";
+
 export default function HomePage() {
+    const theme = useTheme();
+
     return (
-        <div className="overflow-hidden">
-            {/* Hero Section */}
-            <section className="relative h-screen flex items-center justify-center pt-20 px-4 md:px-0">
-                <div className="absolute inset-0 z-0">
+        <Box sx={{ overflow: "hidden" }}>
+             {/* Hero Section */}
+             <Box component="section" sx={{ position: "relative", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", pt: 10, px: { xs: 2, md: 0 } }}>
+                <Box sx={{ position: "absolute", inset: 0, zIndex: 0 }}>
                     <Image
                         src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b"
                         alt="Mountains"
                         fill
-                        className="object-cover brightness-[0.6] dark:brightness-[0.4]"
+                        style={{ objectFit: 'cover', filter: theme.palette.mode === 'dark' ? 'brightness(0.4)' : 'brightness(0.6)' }}
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-50 dark:to-gray-950" />
-                </div>
+                    <Box sx={{ position: "absolute", inset: 0, background: theme.palette.mode === 'dark' ? 'linear-gradient(to bottom, transparent, transparent, #030712)' : 'linear-gradient(to bottom, transparent, transparent, #f8fafc)' }} />
+                </Box>
 
-                <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-                    <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-white text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-6 md:mb-8 border border-white/20 animate-fade-in">
+                <Container maxWidth="lg" sx={{ position: "relative", zIndex: 10, textAlign: "center", mt: 6 }}>
+                    <Box sx={{ 
+                        display: "inline-block", 
+                        px: 2, 
+                        py: 0.75, 
+                        bgcolor: "rgba(255,255,255,0.1)", 
+                        backdropFilter: "blur(12px)", 
+                        borderRadius: "9999px",
+                        color: "#fff",
+                        fontSize: { xs: "10px", md: "0.75rem" },
+                        fontWeight: 700,
+                        letterSpacing: "0.2em",
+                        textTransform: "uppercase",
+                        mb: { xs: 3, md: 4 },
+                        border: "1px solid rgba(255,255,255,0.2)"
+                    }}>
                         Luxury Boutique Hotel
-                    </span>
-                    <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 md:mb-8 tracking-tight leading-[1.2] md:leading-[1.1] max-w-4xl mx-auto">
-                        Escape to the Heart of the <span className="text-indigo-400 italic">Wilderness</span>
-                    </h1>
-                    <p className="text-base md:text-xl text-gray-200 mb-10 md:mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+                    </Box>
+                    <Typography variant="h1" sx={{ 
+                        fontSize: { xs: "2.25rem", md: "4.5rem" }, 
+                        fontWeight: 700, 
+                        color: "#fff", 
+                        mb: { xs: 3, md: 4 }, 
+                        letterSpacing: "-0.025em",
+                        lineHeight: { xs: 1.2, md: 1.1 },
+                        maxWidth: "800px",
+                        mx: "auto"
+                    }}>
+                        Escape to the Heart of the <Box component="span" sx={{ color: theme.palette.primary.light, fontStyle: "italic" }}>Wilderness</Box>
+                    </Typography>
+                    <Typography sx={{ 
+                        fontSize: { xs: "1rem", md: "1.25rem" },
+                        color: "grey.200",
+                        mb: { xs: 5, md: 6 },
+                        maxWidth: "600px",
+                        mx: "auto",
+                        fontWeight: 300,
+                        lineHeight: 1.6
+                    }}>
                         Discover a unique blend of untamed nature and modern luxury at our secluded boutique resort. Your sanctuary awaits.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-                        <Link
+                    </Typography>
+                    <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, alignItems: "center", justifyContent: "center", gap: { xs: 2, md: 3 } }}>
+                        <Button 
+                            component={Link}
                             href="/explore"
-                            className="w-full sm:w-auto px-8 py-4 bg-indigo-600 text-white rounded-full font-bold flex items-center justify-center gap-3 transition-all hover:bg-indigo-700 hover:gap-5 shadow-2xl shadow-indigo-500/30 text-sm md:text-base"
+                            variant="contained"
+                            color="primary"
+                            endIcon={<HiArrowRight />}
+                            sx={{
+                                width: { xs: "100%", sm: "auto" },
+                                px: 4,
+                                py: 2,
+                                borderRadius: "9999px",
+                                fontWeight: 700,
+                                fontSize: { xs: "0.875rem", md: "1rem" },
+                                textTransform: "none",
+                                boxShadow: "0 25px 50px -12px rgba(99, 102, 241, 0.3)",
+                                transition: "all 0.3s ease",
+                                '&:hover': {
+                                    transform: "translateY(-2px)",
+                                    boxShadow: "0 25px 50px -12px rgba(99, 102, 241, 0.5)",
+                                }
+                            }}
                         >
-                            Explore Our Cabins <HiArrowRight className="w-5 h-5" />
-                        </Link>
-                        <Link
+                            Explore Our Cabins
+                        </Button>
+                        <Button 
+                            component={Link}
                             href="/about"
-                            className="w-full sm:w-auto px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-full font-bold hover:bg-white/20 transition-all text-sm md:text-base flex items-center justify-center"
+                            sx={{
+                                width: { xs: "100%", sm: "auto" },
+                                px: 4,
+                                py: 2,
+                                bgcolor: "rgba(255,255,255,0.1)",
+                                backdropFilter: "blur(12px)",
+                                border: "1px solid rgba(255,255,255,0.3)",
+                                color: "#fff",
+                                borderRadius: "9999px",
+                                fontWeight: 700,
+                                fontSize: { xs: "0.875rem", md: "1rem" },
+                                textTransform: "none",
+                                transition: "all 0.3s ease",
+                                '&:hover': {
+                                    bgcolor: "rgba(255,255,255,0.2)",
+                                }
+                            }}
                         >
                             Learn More
-                        </Link>
-                    </div>
-                </div>
-            </section>
+                        </Button>
+                    </Box>
+                </Container>
+            </Box>
 
             {/* Features Section */}
-            <section className="py-32 container mx-auto px-6">
-                <div className="text-center mb-20">
-                    <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            <Container component="section" maxWidth="lg" sx={{ py: 16, px: { xs: 3, md: 0 } }}>
+                <Box sx={{ textAlign: "center", mb: 10 }}>
+                    <Typography variant="h2" sx={{ fontSize: "2.25rem", fontWeight: 700, mb: 3, color: "text.primary" }}>
                         Why Choose The Wild Oasis?
-                    </h2>
-                    <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+                    </Typography>
+                    <Typography sx={{ color: "text.secondary", maxWidth: "600px", mx: "auto" }}>
                         Everything you need for a perfect getaway, meticulously designed to ensure comfort and inspiration.
-                    </p>
-                </div>
+                    </Typography>
+                </Box>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div className="p-8 bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
-                        <div className="w-14 h-14 bg-indigo-50 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <HiShieldCheck className="w-7 h-7 text-indigo-600" />
-                        </div>
-                        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Ultimate Privacy</h3>
-                        <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                            Our cabins represent the pinnacle of seclusion, spaced perfectly to ensure your peace and quiet.
-                        </p>
-                    </div>
+                <Grid container spacing={6}>
+                    <Grid item xs={12} md={4}>
+                        <Paper 
+                            elevation={0}
+                            sx={{
+                                p: 4,
+                                border: "1px solid",
+                                borderColor: "divider",
+                                borderRadius: "24px",
+                                bgcolor: "background.paper",
+                                transition: "all 0.3s ease",
+                                '&:hover': {
+                                    transform: "translateY(-8px)",
+                                    boxShadow: theme.shadows[4]
+                                }
+                            }}
+                        >
+                            <Box sx={{ 
+                                width: 56, 
+                                height: 56, 
+                                bgcolor: theme.palette.mode === 'dark' ? alpha(theme.palette.primary.main, 0.2) : alpha(theme.palette.primary.light, 0.2), 
+                                borderRadius: "16px", 
+                                display: "flex", 
+                                alignItems: "center", 
+                                justifyContent: "center", 
+                                mb: 3 
+                            }}>
+                                <HiShieldCheck size={28} color={theme.palette.primary.main} />
+                            </Box>
+                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: "text.primary" }}>Ultimate Privacy</Typography>
+                            <Typography sx={{ color: "text.secondary", fontSize: "0.875rem", lineHeight: 1.6 }}>
+                                Our cabins represent the pinnacle of seclusion, spaced perfectly to ensure your peace and quiet.
+                            </Typography>
+                        </Paper>
+                    </Grid>
+                    
+                    <Grid item xs={12} md={4}>
+                        <Paper 
+                            elevation={0}
+                            sx={{
+                                p: 4,
+                                border: "1px solid",
+                                borderColor: "divider",
+                                borderRadius: "24px",
+                                bgcolor: "background.paper",
+                                transition: "all 0.3s ease",
+                                '&:hover': {
+                                    transform: "translateY(-8px)",
+                                    boxShadow: theme.shadows[4]
+                                }
+                            }}
+                        >
+                            <Box sx={{ 
+                                width: 56, 
+                                height: 56, 
+                                bgcolor: theme.palette.mode === 'dark' ? alpha(theme.palette.warning.main, 0.2) : alpha(theme.palette.warning.light, 0.2), 
+                                borderRadius: "16px", 
+                                display: "flex", 
+                                alignItems: "center", 
+                                justifyContent: "center", 
+                                mb: 3 
+                            }}>
+                                <HiSun size={28} color={theme.palette.warning.main} />
+                            </Box>
+                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: "text.primary" }}>Stunning Views</Typography>
+                            <Typography sx={{ color: "text.secondary", fontSize: "0.875rem", lineHeight: 1.6 }}>
+                                Wake up to breathtaking panoramic views of the mountains and valleys right from your bedside.
+                            </Typography>
+                        </Paper>
+                    </Grid>
 
-                    <div className="p-8 bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
-                        <div className="w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <HiSun className="w-7 h-7 text-amber-600" />
-                        </div>
-                        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Stunning Views</h3>
-                        <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                            Wake up to breathtaking panoramic views of the mountains and valleys right from your bedside.
-                        </p>
-                    </div>
-
-                    <div className="p-8 bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
-                        <div className="w-14 h-14 bg-rose-50 dark:bg-rose-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <HiStar className="w-7 h-7 text-rose-600" />
-                        </div>
-                        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">5-Star Amenities</h3>
-                        <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                            From heated floors to private wine cellars, every cabin is stocked with premium amenities for your stay.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
+                    <Grid item xs={12} md={4}>
+                        <Paper 
+                            elevation={0}
+                            sx={{
+                                p: 4,
+                                border: "1px solid",
+                                borderColor: "divider",
+                                borderRadius: "24px",
+                                bgcolor: "background.paper",
+                                transition: "all 0.3s ease",
+                                '&:hover': {
+                                    transform: "translateY(-8px)",
+                                    boxShadow: theme.shadows[4]
+                                }
+                            }}
+                        >
+                            <Box sx={{ 
+                                width: 56, 
+                                height: 56, 
+                                bgcolor: theme.palette.mode === 'dark' ? alpha(theme.palette.error.main, 0.2) : alpha(theme.palette.error.light, 0.2), 
+                                borderRadius: "16px", 
+                                display: "flex", 
+                                alignItems: "center", 
+                                justifyContent: "center", 
+                                mb: 3 
+                            }}>
+                                <HiStar size={28} color={theme.palette.error.main} />
+                            </Box>
+                            <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: "text.primary" }}>5-Star Amenities</Typography>
+                            <Typography sx={{ color: "text.secondary", fontSize: "0.875rem", lineHeight: 1.6 }}>
+                                From heated floors to private wine cellars, every cabin is stocked with premium amenities for your stay.
+                            </Typography>
+                        </Paper>
+                    </Grid>
+                </Grid>
+            </Container>
 
             {/* CTA Section */}
-            <section className="pb-32 container mx-auto px-6">
-                <div className="relative rounded-[3rem] overflow-hidden bg-indigo-950 px-8 py-24 md:px-24 text-center">
-                    <div className="absolute inset-0 z-0">
+            <Container component="section" maxWidth="lg" sx={{ pb: 16, px: { xs: 3, md: 0 } }}>
+                <Box sx={{ 
+                    position: "relative", 
+                    borderRadius: "48px", 
+                    overflow: "hidden", 
+                    bgcolor: "#1e1b4b", // indigo-950
+                    px: { xs: 4, md: 12 }, 
+                    py: 12, 
+                    textAlign: "center" 
+                }}>
+                    <Box sx={{ position: "absolute", inset: 0, zIndex: 0 }}>
                         <Image
                             src="https://images.unsplash.com/photo-1449156001404-5867cdb3f71c"
                             alt="Cabin night"
                             fill
-                            className="object-cover opacity-30"
+                            style={{ objectFit: 'cover', opacity: 0.3 }}
                         />
-                    </div>
-                    <div className="relative z-10">
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Ready for an adventure?</h2>
-                        <p className="text-indigo-200 mb-12 max-w-xl mx-auto">
+                    </Box>
+                    <Box sx={{ position: "relative", zIndex: 10 }}>
+                        <Typography variant="h2" sx={{ fontSize: { xs: "2.25rem", md: "3rem" }, fontWeight: 700, color: "#fff", mb: 4 }}>
+                            Ready for an adventure?
+                        </Typography>
+                        <Typography sx={{ color: "primary.light", mb: 6, maxWidth: "600px", mx: "auto" }}>
                             Book your stay today and experience the magic of the wild oasis. Your perfect getaway is just a few clicks away.
-                        </p>
-                        <Link
+                        </Typography>
+                        <Button 
+                            component={Link}
                             href="/explore"
-                            className="px-10 py-5 bg-white text-indigo-950 rounded-full font-bold text-lg hover:bg-indigo-50 transition-colors shadow-2xl"
+                            variant="contained"
+                            sx={{
+                                px: 5,
+                                py: 2.5,
+                                bgcolor: "#fff",
+                                color: "#1e1b4b",
+                                borderRadius: "9999px",
+                                fontWeight: 700,
+                                fontSize: "1.125rem",
+                                textTransform: "none",
+                                boxShadow: theme.shadows[10],
+                                '&:hover': {
+                                    bgcolor: "grey.50",
+                                }
+                            }}
                         >
                             Start Your Journey
-                        </Link>
-                    </div>
-                </div>
-            </section>
-        </div>
+                        </Button>
+                    </Box>
+                </Box>
+            </Container>
+        </Box>
     );
 }
