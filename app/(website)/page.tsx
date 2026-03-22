@@ -137,7 +137,7 @@ export default function HomePage() {
                 </Box>
 
                 <Grid container spacing={6}>
-                    <Grid item xs={12} md={4}>
+                    <Grid size={{ xs: 12, md: 4 }}>
                         <Paper 
                             elevation={0}
                             sx={{
@@ -172,7 +172,7 @@ export default function HomePage() {
                         </Paper>
                     </Grid>
                     
-                    <Grid item xs={12} md={4}>
+                    <Grid size={{ xs: 12, md: 4 }}>
                         <Paper 
                             elevation={0}
                             sx={{
@@ -207,7 +207,7 @@ export default function HomePage() {
                         </Paper>
                     </Grid>
 
-                    <Grid item xs={12} md={4}>
+                    <Grid size={{ xs: 12, md: 4 }}>
                         <Paper 
                             elevation={0}
                             sx={{

@@ -27,7 +27,7 @@ const Footer = () => {
         >
             <Container maxWidth="lg">
                 <Grid container spacing={6} sx={{ mb: 8 }}>
-                    <Grid item xs={12} sm={6} lg={4}>
+                    <Grid size={{ xs: 12, sm: 6, lg: 4 }}>
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                 <Logo width={40} height={28} />
@@ -42,7 +42,7 @@ const Footer = () => {
                         </Box>
                     </Grid>
 
-                    <Grid item xs={12} sm={6} lg={2}>
+                    <Grid size={{ xs: 12, sm: 6, lg: 2 }}>
                         <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'text.primary', mb: 3 }}>
                             Navigation
                         </Typography>
@@ -67,7 +67,7 @@ const Footer = () => {
                         </Box>
                     </Grid>
 
-                    <Grid item xs={12} sm={6} lg={2}>
+                    <Grid size={{ xs: 12, sm: 6, lg: 2 }}>
                         <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'text.primary', mb: 3 }}>
                             Legal
                         </Typography>
@@ -95,7 +95,7 @@ const Footer = () => {
                         </Box>
                     </Grid>
 
-                    <Grid item xs={12} sm={6} lg={4}>
+                    <Grid size={{ xs: 12, sm: 6, lg: 4 }}>
                         <Box sx={{ 
                             bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.02)' : 'grey.50', 
                             p: 4, 
